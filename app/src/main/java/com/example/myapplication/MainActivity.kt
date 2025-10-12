@@ -7,13 +7,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,27 +35,37 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun app() {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
+            .fillMaxHeight()
             .background(
                 color = colorResource(id = R.color.mi_color_de_fondo),
             )
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(400.dp),
-            painter = painterResource
-                (id = R.drawable.plants),
-            contentDescription = "background de plantas"
-        )
-        Text(
-            text = "Welcome to Plants", fontSize = 32.sp,
-            color = colorResource
-                (id = R.color.color_destacado),
-            modifier = Modifier.fillMaxWidth(),
-            textAlign = TextAlign.Center
-        )
+        item {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(max = 800.dp),
+                painter = painterResource
+                    (id = R.drawable.img),
+                contentScale = ContentScale.Fit,
+                contentDescription = "background de plantas"
+            )
+            Text(
+                text = "Welcome to Plants", fontSize = 32.sp,
+                color = colorResource
+                    (id = R.color.color_destacado),
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+            Text(text = "This", fontSize = 18.sp)
+            Text(text = "is", fontSize = 18.sp)
+            Text(text = "the plants space", fontSize = 18.sp)
+            Text(text = "This", fontSize = 18.sp)
+            Text(text = "is", fontSize = 18.sp)
+            Text(text = "the plants space", fontSize = 18.sp)
+        }
     }
 }
