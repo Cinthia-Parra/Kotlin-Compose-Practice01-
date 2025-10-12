@@ -4,57 +4,57 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.myapplication.ui.theme.MyApplicationTheme
+import androidx.compose.ui.unit.sp
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            initApp ()
-            }
         }
     }
+}
 
-@Preview(showBackground = true, name = "exampleInit")
+@Preview
 @Composable
-fun initApp() {
-    MyApplicationTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            Greeting(
-                name = "Android",
-                modifier = Modifier.padding(innerPadding)
+fun app() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(
+                color = colorResource(id = R.color.mi_color_de_fondo),
             )
-        }
-    }
-}
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-@Preview(showBackground = true, name = "example")
-@Composable
-fun exampleModifier () {
-    Text(
-        text= "este es un ejemplo",
-        modifier = Modifier.padding(18.dp)
-    )
-}
-@Preview(showBackground = true, name = "textoPrueba")
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
+    ) {
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(400.dp),
+            painter = painterResource
+                (id = R.drawable.plants),
+            contentDescription = "background de plantas"
+        )
+        Text(
+            text = "Welcome to Plants", fontSize = 32.sp,
+            color = colorResource
+                (id = R.color.color_destacado),
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
     }
 }

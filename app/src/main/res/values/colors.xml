@@ -7,4 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mi_color_de_fondo">#B3D5AA</color> <!-- Un azul oscuro -->
+    <color name="color_destacado">#1E3520</color>
 </resources>
