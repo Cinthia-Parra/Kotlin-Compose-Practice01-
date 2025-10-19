@@ -6,11 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -60,12 +63,32 @@ fun app() {
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
+
             Text(text = "This", fontSize = 18.sp)
             Text(text = "is", fontSize = 18.sp)
             Text(text = "the plants space", fontSize = 18.sp)
-            Text(text = "This", fontSize = 18.sp)
-            Text(text = "is", fontSize = 18.sp)
-            Text(text = "the plants space", fontSize = 18.sp)
+            LazyRow(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                item {
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "This", fontSize = 18.sp)
+                    Text(text = "is", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                    Text(text = "the plants space", fontSize = 18.sp)
+                }
+
+            }
         }
     }
 }
