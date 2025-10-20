@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -13,9 +14,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -37,7 +41,9 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun app() {
+fun App() {
+    var counter by rememberSaveable { mutableIntStateOf (value = 0) }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +56,9 @@ fun app() {
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .padding(top = 28.dp, bottom = 28.dp)
                     .heightIn(max = 800.dp),
+
                 painter = painterResource
                     (id = R.drawable.img),
                 contentScale = ContentScale.Fit,
@@ -63,32 +71,28 @@ fun app() {
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
-
-            Text(text = "This", fontSize = 18.sp)
-            Text(text = "is", fontSize = 18.sp)
-            Text(text = "the plants space", fontSize = 18.sp)
-            LazyRow(
+            Row (modifier = Modifier.padding(start = 12.dp)) {
+                Image(
+                    painter = painterResource(id = android.R.drawable.btn_star_big_on),
+                    contentDescription = "nature Icon",
+                    modifier = Modifier.clickable {counter++}
+                )
+                Text (
+                    text = counter.toString() ,
+                     color = colorResource
+                        (id = R.color.color_destacado)
+                )
+            }
+            Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
-                item {
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "This", fontSize = 18.sp)
-                    Text(text = "is", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                    Text(text = "the plants space", fontSize = 18.sp)
-                }
-
+                Text(text = "The plants", fontSize = 18.sp)
+                Text(text = "ARE AMAZING", fontSize = 18.sp)
             }
+
         }
     }
 }
